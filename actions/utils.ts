@@ -14,7 +14,7 @@
  * @returns {string}
  *
  */
-function stringParameters (params) {
+export function stringParameters (params) {
   // hide authorization token without overriding params
   let headers = params.__ow_headers || {}
   if (headers.authorization) {
@@ -36,7 +36,7 @@ function stringParameters (params) {
  * @returns {array}
  * @private
  */
-function getMissingKeys (obj, required) {
+export function getMissingKeys (obj, required) {
   return required.filter(r => {
     const splits = r.split('.')
     const last = splits[splits.length - 1]
@@ -59,7 +59,7 @@ function getMissingKeys (obj, required) {
  * @returns {string} if the return value is not null, then it holds an error message describing the missing inputs.
  *
  */
-function checkMissingRequestInputs (params, requiredParams = [], requiredHeaders = []) {
+export function checkMissingRequestInputs (params, requiredParams = [], requiredHeaders = []) {
   let errorMessage = null
 
   // input headers are always lowercase
@@ -93,7 +93,7 @@ function checkMissingRequestInputs (params, requiredParams = [], requiredHeaders
  * @returns {string|undefined} the token string or undefined if not set in request headers.
  *
  */
-function getBearerToken (params) {
+export function getBearerToken (params) {
   if (params.__ow_headers &&
       params.__ow_headers.authorization &&
       params.__ow_headers.authorization.startsWith('Bearer ')) {
@@ -115,7 +115,7 @@ function getBearerToken (params) {
  * @returns {object} the error object, ready to be returned from the action main's function.
  *
  */
-function errorResponse (statusCode, message, logger) {
+export function errorResponse (statusCode, message, logger) {
   if (logger && typeof logger.info === 'function') {
     logger.info(`${statusCode}: ${message}`)
   }
@@ -127,11 +127,4 @@ function errorResponse (statusCode, message, logger) {
       }
     }
   }
-}
-
-module.exports = {
-  errorResponse,
-  getBearerToken,
-  stringParameters,
-  checkMissingRequestInputs
 }
