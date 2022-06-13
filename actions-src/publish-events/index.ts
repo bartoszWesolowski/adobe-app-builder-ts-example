@@ -14,15 +14,15 @@
  */
 
 
-const { Core, Events } = require('@adobe/aio-sdk')
-const uuid = require('uuid')
-const {
+import { Core, Events } from '@adobe/aio-sdk'
+import uuid from 'uuid'
+import {
   CloudEvent
-} = require("cloudevents");
-const { errorResponse, getBearerToken, stringParameters, checkMissingRequestInputs } = require('../utils')
+} from "cloudevents";
+import { errorResponse, getBearerToken, stringParameters, checkMissingRequestInputs } from'../utils'
 
 // main function that will be executed by Adobe I/O Runtime
-async function main (params) {
+export async function main (params) {
   // create a Logger
   const logger = Core.Logger('main', { level: params.LOG_LEVEL || 'info' })
 
@@ -78,7 +78,7 @@ async function main (params) {
 }
 
 function createCloudEvent(providerId, eventCode, payload) {
-  let cloudevent = new CloudEvent({
+  const cloudevent = new CloudEvent({
     source: 'urn:uuid:' + providerId,
     type: eventCode,
     datacontenttype: "application/json",
@@ -87,4 +87,3 @@ function createCloudEvent(providerId, eventCode, payload) {
   });
   return cloudevent
 }
-exports.main = main

@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "ES2015",                     
+        "allowJs": false,                 
+        "checkJs": false,
+        "declaration": false,
+        "sourceMap": false,
+        "outDir": "actions",
+        "noImplicitAny": false,
+        "moduleResolution": "node",
+        "esModuleInterop": true
+    },
+    "include": [
+        "actions-src/**/*"
+    ],
+    "exclude": [
+        "dev-keys"
+    ]
+}
