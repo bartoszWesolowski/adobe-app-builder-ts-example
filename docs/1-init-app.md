@@ -25,3 +25,13 @@ Creating](https://developer.adobe.com/app-builder/docs/getting_started)
    2. Type of actions to generate: `Generic`
    3. UI:  react spectrum
    4. Action names: helloworld-ts, publish-events
+
+## Test your app
+
+To test your app run `aio app run`. This will deploy actions to Adobe Runtime and will run local web server locally. 
+
+The easiest way to test HTTP action for now is open the app using `https://experience.adobe.com/` url and run invoke the action with the example UI provided OOTB with the project.
+
+## View logs
+
+To view logs for the action run `aio app logs --tail`
